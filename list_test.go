@@ -5,8 +5,7 @@ import (
 )
 
 func TestWhere(t *testing.T) {
-	l := NewList[int]()
-	l = append(l, 1, 2, 3, 4, 5, 6)
+	l := List[int]{1, 2, 3, 4, 5, 6}
 
 	wl := l.Where(func(a int) bool {
 		if a > 5 {
@@ -25,8 +24,7 @@ func TestWhere(t *testing.T) {
 }
 
 func TestAny(t *testing.T) {
-	l := NewList[int]()
-	l = append(l, 1, 2, 3, 4, 5, 6)
+	l := List[int]{1, 2, 3, 4, 5, 6}
 
 	result := l.Any(func(a int) bool {
 		if a == 5 {
@@ -41,8 +39,7 @@ func TestAny(t *testing.T) {
 }
 
 func TestAll(t *testing.T) {
-	l := NewList[int]()
-	l = append(l, 1, 2, 3, 4, 5, 6)
+	l := List[int]{1, 2, 3, 4, 5, 6}
 
 	result := l.All(func(a int) bool {
 		if a != 10 {
@@ -57,8 +54,7 @@ func TestAll(t *testing.T) {
 }
 
 func TestFirst(t *testing.T) {
-	l := NewList[int]()
-	l = append(l, 1, 2, 3, 4, 5, 6)
+	l := List[int]{1, 2, 3, 4, 5, 6}
 
 	result, err := l.First(func(a int) bool {
 		if a == 3 {
@@ -77,8 +73,7 @@ func TestFirst(t *testing.T) {
 }
 
 func TestFirstOrDefault(t *testing.T) {
-	l := NewList[int]()
-	l = append(l, 1, 2, 3, 4, 5, 6)
+	l := List[int]{1, 2, 3, 4, 5, 6}
 
 	result := l.FirstOrDefault(func(a int) bool {
 		if a == 10 {
