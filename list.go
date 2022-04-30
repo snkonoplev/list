@@ -3,7 +3,8 @@ package list
 import "errors"
 
 var (
-	ErrNotFound = errors.New("entity not found")
+	ErrNotFound  = errors.New("entity not found")
+	ErrEmptyList = errors.New("list is empty")
 )
 
 type List[A any] []A
