@@ -4,6 +4,23 @@ import (
 	"testing"
 )
 
+func TestChain(t *testing.T) {
+	l := List[int]{6, 2, 5, 4, 3, 1}
+
+	wl := l.Where(func(a int) bool {
+		if a > 5 {
+			return true
+		}
+		return false
+	}).FirstOrDefault(func(a int) bool {
+		return a == 6
+	})
+
+	if wl != 6 {
+		t.Errorf("%v is not equal to 6", wl)
+	}
+}
+
 func TestWhere(t *testing.T) {
 	l := List[int]{1, 2, 3, 4, 5, 6}
 
@@ -14,12 +31,12 @@ func TestWhere(t *testing.T) {
 		return false
 	})
 
-	if len(wl) != 1 {
-		t.Errorf("len of list more then 1 and equal %v", len(wl))
+	if len(*wl) != 1 {
+		t.Errorf("len of list more then 1 and equal %v", len(*wl))
 	}
 
-	if wl[0] != 6 {
-		t.Errorf("fist value in list is %v and it is not equal to 6", wl[0])
+	if wl.FirstOrDefault(func(a int) bool { return true }) != 6 {
+		t.Errorf("fist value in list is %v and it is not equal to 6", wl.FirstOrDefault(func(a int) bool { return true }))
 	}
 }
 

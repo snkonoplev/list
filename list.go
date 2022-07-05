@@ -9,7 +9,7 @@ var (
 
 type List[A any] []A
 
-func (l *List[A]) Where(predicate func(a A) bool) List[A] {
+func (l *List[A]) Where(predicate func(a A) bool) *List[A] {
 	var result List[A]
 
 	for _, a := range *l {
@@ -18,7 +18,7 @@ func (l *List[A]) Where(predicate func(a A) bool) List[A] {
 		}
 	}
 
-	return result
+	return &result
 }
 
 func (l *List[A]) Any(predicate func(a A) bool) bool {
